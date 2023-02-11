@@ -307,11 +307,19 @@ const matrix = [
   ],
 ];
 
-function greatestProduct(array) {
-  let max = 0;
+function greatestProduct(matrix) {
+  let result;
   for (let i = 0; i < 4; i++) {
-    for (let j = 0; i < 4; j++) {}
+    console.log(`This is i: ${i}`);
+    for (let j = 0; j < 4; j++) {
+      console.log(`This is j: ${j}`);
+      result =
+        matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+      console.log(result);
+    }
   }
+  console.log(result);
+  return result;
 }
 
 // The following is required to make unit tests work.
