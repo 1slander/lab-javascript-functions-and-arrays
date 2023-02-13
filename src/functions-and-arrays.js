@@ -308,34 +308,82 @@ const matrix = [
 ];
 
 function greatestProduct(matrix) {
+  let maxProductRow = 0;
+  let maxProductCol = 0;
   let resultRow;
   let resultCol;
   let finalResult;
-  for (let i = 0; i < 4; i++) {
-    console.log(`This is i: ${i}`);
-    for (let j = 0; j < 4; j++) {
-      console.log(`This is j: ${j}`);
+  for (let i = 0; i <= 16; i++) {
+    console.log(`This is i row: ${i}`);
+    for (let j = 0; j <= 16; j++) {
+      console.log(`This is j row: ${j}`);
+
       resultRow =
         matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+      if (resultRow > maxProductRow) {
+        maxProductRow = resultRow;
+        console.log(maxProductRow);
+      }
       console.log(resultRow);
     }
   }
-  for (let j = 0; j < 4; j++) {
+  for (let j = 0; j <= 16; j++) {
     console.log(`This is j Col: ${j}`);
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i <= 16; i++) {
       console.log(`This is i Col: ${i}`);
       resultCol =
         matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
       console.log(resultCol);
+      if (resultCol > maxProductCol) {
+        maxProductCol = resultCol;
+        console.log(maxProductCol);
+      }
     }
     console.log(resultRow, resultCol);
   }
-  if (resultRow === resultCol) {
-    finalResult = resultRow;
+  if (maxProductRow === maxProductCol) {
+    finalResult = maxProductRow;
+  } else if (maxProductRow > maxProductCol) {
+    finalResult = maxProductRow;
+  } else if (maxProductRow < maxProductCol) {
+    finalResult = maxProductCol;
   }
   console.log(finalResult);
   return finalResult;
 }
+
+console.log(greatestProduct(matrix));
+
+// First Version
+/*function greatestProduct(matrix) {
+let resultRow;
+let resultCol;
+let finalResult;
+for (let i = 0; i < 4; i++) {
+  console.log(`This is i: ${i}`);
+  for (let j = 0; j < 4; j++) {
+    console.log(`This is j: ${j}`);
+    resultRow =
+      matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+    console.log(resultRow);
+  }
+}
+for (let j = 0; j < 4; j++) {
+  console.log(`This is j Col: ${j}`);
+  for (let i = 0; i < 4; i++) {
+    console.log(`This is i Col: ${i}`);
+    resultCol =
+      matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+    console.log(resultCol);
+  }
+  console.log(resultRow, resultCol);
+}
+if (resultRow === resultCol) {
+  finalResult = resultRow;
+}
+console.log(finalResult);
+return finalResult;
+}*/
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
